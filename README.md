@@ -82,3 +82,24 @@ Each page has a note box. Use it for anything a word cannot hold:
 ## Which part to take
 
 Say which part you are taking, so that two people do not proof the same one.
+Put your name in the table below and commit it — that is the whole system.
+
+| part | pages | words | marked | who is on it |
+|---|---|---|---|---|
+| `19-Psalms-for-1st-Class-Feasts-of-Our-Lord` | 4 | 1,309 | 8.8% | |
+| `35-Appendix-II-Excerpts-from-the-Roman-Ritual` | 10 | 2,888 | 6.8% | |
+| `32-Seven-Penitential-Psalms-and-Litany-of-the-Saints` | 10 | 3,397 | 7.8% | |
+| `30-Little-Office-of-the-BVM-and-Pilgrimage-Psalms` | 10 | 3,358 | 10.1% | |
+| `29-Saturday-Office-of-the-BVM` | 12 | 4,088 | 9.6% | |
+| `27-Common-of-a-Non-Virgin-outside-PT` | 14 | 4,843 | 9.8% | |
+| `26-Common-of-a-Virgin-outside-PT` | 22 | 7,650 | 9.7% | Max |
+
+Start with **19**. It is four pages and it exists so that you can go through
+the whole loop once — correct a few words, press download, send the file — and
+find out whether anything about the sheet is confusing before you spend a real
+afternoon on it.
+
+Then take whichever you like. They are all independent.
+
+There are 31 parts in the book. These are the small ones. The four big Propers
+run to 576 pages each and nobody should meet one first.
