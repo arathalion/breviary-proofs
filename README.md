@@ -79,6 +79,27 @@ Each page has a note box. Use it for anything a word cannot hold:
 - A missing line, or a line in the wrong place.
 - Anything that looks wrong and is not one word.
 
+## Start here if you only do one thing: `proof-00-Repairs`
+
+18 pages, and they are the worst 18 in the book. They were not chosen by hand.
+`tools/unread.py` measures, on every one of the 2,386 pages, how much ink no
+word box covers — that is, ink the machine never read at all. These 18 carry
+two to twenty three times as much of it as the rest of their part.
+
+They mark 20.3% of their words for checking, against about 9% for the book.
+
+Two faults live here and both need a person:
+
+- **A title that runs across both columns.** The reader cuts the page down the
+  middle, so a heading spanning the measure is split and each half lands in a
+  different column. `OFFICE OF THE SEASON` came out as `SON`. Five attempts to
+  detect this automatically have failed, the last one on 2026-08-17, because
+  the test that finds a real title also fires on ordinary two column text and
+  interleaving two columns is a worse and quieter fault. So it is yours.
+  **Write what the heading should say in the note box for that page.**
+- **Bleed through from the back of the leaf**, which the reader takes for
+  faint type and returns as stray `|`, `}`, `~`, `*`. Delete them.
+
 ## Which part to take
 
 Say which part you are taking, so that two people do not proof the same one.

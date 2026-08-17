@@ -1,0 +1,789 @@
+{
+ "sheet": "19-Psalms-for-1st-Class-Feasts-of-Our-Lord",
+ "who": "Max",
+ "pages": {
+  "19-Psalms-for-1st-Class-Feasts-of-Our-Lord-0001a": {
+   "full": true,
+   "note": "drop caps don't trancribe",
+   "fix": {
+    "2.41": {
+     "was": ".",
+     "now": "",
+     "after": "deny"
+    },
+    "2.34": {
+     "was": "|",
+     "now": "",
+     "after": "fess"
+    },
+    "3.2": {
+     "was": "KX.",
+     "now": "R/."
+    },
+    "4.10": {
+     "was": "showed.",
+     "now": "showed"
+    },
+    "5.0": {
+     "was": "}",
+     "now": ""
+    },
+    "7.0": {
+     "was": "7",
+     "now": "",
+     "after": "y."
+    },
+    "7.1": {
+     "was": "y.",
+     "now": "V/."
+    },
+    "8.15": {
+     "was": "~",
+     "now": "–"
+    },
+    "9.0": {
+     "was": "j",
+     "now": "",
+     "after": "Lesson"
+    },
+    "10.0": {
+     "was": "nd",
+     "now": "And"
+    },
+    "11.0": {
+     "was": "}",
+     "now": ""
+    },
+    "12.6": {
+     "was": "|",
+     "now": "",
+     "after": "hurt"
+    },
+    "14.0": {
+     "was": "RR.",
+     "now": "R/."
+    },
+    "16.0": {
+     "was": "*",
+     "now": ""
+    },
+    "17.0": {
+     "was": "burning,",
+     "now": "burning, *"
+    },
+    "18.0": {
+     "was": "yy",
+     "now": "V/."
+    },
+    "19.19": {
+     "was": "=",
+     "now": "–"
+    },
+    "19.21": {
+     "was": "-",
+     "now": "–"
+    },
+    "19.14": {
+     "was": "-",
+     "now": "–"
+    }
+   },
+   "checked": 0
+  },
+  "19-Psalms-for-1st-Class-Feasts-of-Our-Lord-0001b": {
+   "full": true,
+   "note": "the header extends across both columns, so the text is split weirdly. also, seems like the ocr is getting confused with the bleed from the page on the back. numbers and drop caps need to be added",
+   "fix": {
+    "2.0": {
+     "was": "|",
+     "now": "",
+     "after": "|"
+    },
+    "2.2": {
+     "was": "raise,",
+     "now": "Praise,"
+    },
+    "2.11": {
+     "was": "'",
+     "now": "",
+     "after": "name"
+    },
+    "1.9": {
+     "was": "Lor",
+     "now": "Lord"
+    },
+    "2.15": {
+     "was": "Lerd.",
+     "now": "Lord."
+    },
+    "2.16": {
+     "was": "|",
+     "now": "",
+     "after": "May"
+    },
+    "2.23": {
+     "was": "lord",
+     "now": "Lord"
+    },
+    "2.22": {
+     "was": "|",
+     "now": "",
+     "after": "lord"
+    },
+    "2.37": {
+     "was": ".",
+     "now": "",
+     "after": "sun"
+    },
+    "2.44": {
+     "was": "\"",
+     "now": "",
+     "after": "be"
+    },
+    "2.51": {
+     "was": "‘",
+     "now": "",
+     "after": "High"
+    },
+    "2.56": {
+     "was": "'",
+     "now": "",
+     "after": "is"
+    },
+    "2.63": {
+     "was": "°",
+     "now": "",
+     "after": "heavens"
+    },
+    "2.72": {
+     "was": "j",
+     "now": "",
+     "after": "our"
+    },
+    "2.100": {
+     "was": ">",
+     "now": "",
+     "after": "."
+    },
+    "2.101": {
+     "was": ".",
+     "now": "",
+     "after": "ind"
+    },
+    "2.102": {
+     "was": "ind",
+     "now": "and"
+    },
+    "2.110": {
+     "was": ".",
+     "now": "",
+     "after": "up"
+    },
+    "2.117": {
+     "was": "\"",
+     "now": "",
+     "after": "dungheap"
+    },
+    "2.122": {
+     "was": ";",
+     "now": "",
+     "after": "Poor"
+    },
+    "2.124": {
+     "was": "t",
+     "now": "",
+     "after": "To"
+    },
+    "2.123": {
+     "was": "Poor",
+     "now": "poor"
+    },
+    "2.130": {
+     "was": "7",
+     "now": "",
+     "after": "company"
+    },
+    "2.135": {
+     "was": "_",
+     "now": "",
+     "after": "ves,"
+    },
+    "2.136": {
+     "was": "ves,",
+     "now": "yes,"
+    },
+    "2.137": {
+     "was": "With",
+     "now": "with"
+    },
+    "2.143": {
+     "was": "‘To",
+     "now": "To"
+    },
+    "2.148": {
+     "was": "sives",
+     "now": "gives"
+    },
+    "2.152": {
+     "was": "=",
+     "now": "",
+     "after": "and"
+    },
+    "2.154": {
+     "was": "rladdens",
+     "now": "gladdens"
+    },
+    "4.0": {
+     "was": "praise",
+     "now": "O praise"
+    },
+    "4.7": {
+     "was": "wolaim",
+     "now": "acclaim"
+    },
+    "7.13": {
+     "was": "H",
+     "now": ""
+    },
+    "9.0": {
+     "was": "3",
+     "now": "",
+     "after": "y"
+    },
+    "9.1": {
+     "was": "y",
+     "now": "My"
+    },
+    "9.6": {
+     "was": "f",
+     "now": ""
+    },
+    "10.0": {
+     "was": "M",
+     "now": "",
+     "after": "|"
+    },
+    "10.1": {
+     "was": "|",
+     "now": ""
+    },
+    "12.0": {
+     "was": "!",
+     "now": ""
+    },
+    "13.5": {
+     "was": "F",
+     "now": "",
+     "after": "days,"
+    },
+    "13.11": {
+     "was": "if",
+     "now": "",
+     "after": "God"
+    },
+    "13.16": {
+     "was": "F",
+     "now": "",
+     "after": "Put"
+    },
+    "13.18": {
+     "was": "mo",
+     "now": "no"
+    },
+    "13.28": {
+     "was": "|",
+     "now": "",
+     "after": "there"
+    },
+    "13.33": {
+     "was": "|",
+     "now": "",
+     "after": "Take"
+    },
+    "13.38": {
+     "was": "3",
+     "now": "",
+     "after": "return"
+    },
+    "13.45": {
+     "was": "|",
+     "now": "",
+     "after": "plans"
+    },
+    "13.51": {
+     "was": "i",
+     "now": "",
+     "after": "nothing."
+    },
+    "13.53": {
+     "was": "!",
+     "now": "",
+     "after": "He"
+    },
+    "13.64": {
+     "was": "(.",
+     "now": "",
+     "after": "whose"
+    },
+    "13.71": {
+     "was": "I",
+     "now": "",
+     "after": "Who"
+    },
+    "13.76": {
+     "was": "|",
+     "now": "",
+     "after": "and"
+    },
+    "13.83": {
+     "was": "I",
+     "now": "",
+     "after": "all"
+    },
+    "13.87": {
+     "was": "i",
+     "now": "",
+     "after": "It"
+    },
+    "13.94": {
+     "was": "1",
+     "now": "",
+     "after": "for"
+    },
+    "13.102": {
+     "was": "|\"",
+     "now": "",
+     "after": "those"
+    },
+    "13.107": {
+     "was": "|!",
+     "now": "",
+     "after": "It"
+    },
+    "13.121": {
+     "was": "|",
+     "now": ""
+    },
+    "14.0": {
+     "was": "|",
+     "now": ""
+    },
+    "16.0": {
+     "was": "|",
+     "now": ""
+    },
+    "15.4": {
+     "was": ":",
+     "now": ""
+    },
+    "17.4": {
+     "was": "i",
+     "now": "",
+     "after": "sight"
+    },
+    "17.11": {
+     "was": "|",
+     "now": "",
+     "after": "raises"
+    },
+    "17.17": {
+     "was": "“|",
+     "now": "",
+     "after": "bowed"
+    },
+    "17.23": {
+     "was": "pretects",
+     "now": "protects"
+    },
+    "17.24": {
+     "was": "|",
+     "now": "",
+     "after": "the"
+    },
+    "17.30": {
+     "was": "|",
+     "now": "",
+     "after": "the"
+    },
+    "17.35": {
+     "was": "|",
+     "now": "",
+     "after": "It"
+    },
+    "17.42": {
+     "was": "|",
+     "now": ""
+    }
+   },
+   "checked": 4
+  },
+  "19-Psalms-for-1st-Class-Feasts-of-Our-Lord-0002a": {
+   "full": true,
+   "note": "numbers next to each psalm need to be added",
+   "fix": {
+    "0.4": {
+     "was": ":",
+     "now": "",
+     "after": "The"
+    },
+    "0.19": {
+     "was": "4",
+     "now": ""
+    },
+    "0.18": {
+     "was": "|",
+     "now": "",
+     "after": "4"
+    },
+    "1.3": {
+     "was": "i",
+     "now": "",
+     "after": "~p"
+    },
+    "1.4": {
+     "was": "~p",
+     "now": ""
+    },
+    "2.0": {
+     "was": ":",
+     "now": "",
+     "after": "raise"
+    },
+    "2.1": {
+     "was": "raise",
+     "now": "Praise"
+    },
+    "2.6": {
+     "was": "|",
+     "now": "",
+     "after": "is"
+    },
+    "2.12": {
+     "was": "|",
+     "now": "",
+     "after": "God"
+    },
+    "2.19": {
+     "was": "|",
+     "now": "",
+     "after": "to"
+    },
+    "2.26": {
+     "was": "|",
+     "now": "",
+     "after": "The"
+    },
+    "2.34": {
+     "was": "_",
+     "now": "",
+     "after": "brings"
+    },
+    "2.36": {
+     "was": "|",
+     "now": "",
+     "after": "back"
+    },
+    "2.38": {
+     "was": "Israei’s",
+     "now": "Israel's"
+    },
+    "3.0": {
+     "was": "{",
+     "now": "",
+     "after": "{"
+    },
+    "3.1": {
+     "was": "{",
+     "now": ""
+    },
+    "4.35": {
+     "was": ".",
+     "now": "",
+     "after": "sprout"
+    },
+    "5.5": {
+     "was": "ith",
+     "now": "",
+     "after": "Warriors’"
+    },
+    "5.6": {
+     "was": "Warriors’",
+     "now": "warriors’"
+    },
+    "5.17": {
+     "was": "it.",
+     "now": "in"
+    },
+    "8.0": {
+     "was": "O",
+     "now": ""
+    },
+    "7.0": {
+     "was": "praise",
+     "now": "O praise"
+    },
+    "9.5": {
+     "was": "Goad!",
+     "now": "God!"
+    },
+    "9.34": {
+     "was": "wheat,",
+     "now": "wheat."
+    },
+    "9.45": {
+     "was": "swiftiy",
+     "now": "swiftly"
+    }
+   },
+   "checked": 2
+  },
+  "19-Psalms-for-1st-Class-Feasts-of-Our-Lord-0002b": {
+   "full": true,
+   "note": "header is across columns again",
+   "fix": {
+    "16.0": {
+     "was": ":",
+     "now": "",
+     "after": "I"
+    },
+    "18.2": {
+     "was": "l.ord",
+     "now": "Lord"
+    },
+    "18.1": {
+     "was": "-",
+     "now": "",
+     "after": "l.ord"
+    },
+    "18.7": {
+     "was": "e",
+     "now": "",
+     "after": "dwelling"
+    },
+    "18.13": {
+     "was": "5",
+     "now": "",
+     "after": "house"
+    },
+    "18.25": {
+     "was": "it",
+     "now": "",
+     "after": "Of"
+    },
+    "18.31": {
+     "was": "t",
+     "now": "",
+     "after": "sume"
+    },
+    "18.32": {
+     "was": "sume",
+     "now": "name"
+    },
+    "20.0": {
+     "was": "h",
+     "now": "",
+     "after": "the"
+    },
+    "20.3": {
+     "was": "Allehuta.",
+     "now": "P.T. Alleluia"
+    },
+    "19.1": {
+     "was": "T.",
+     "now": ""
+    },
+    "19.0": {
+     "was": "P.",
+     "now": "",
+     "after": "T."
+    },
+    "22.1": {
+     "was": "O-",
+     "now": "O"
+    },
+    "22.3": {
+     "was": "d",
+     "now": "",
+     "after": "viints,"
+    },
+    "22.4": {
+     "was": "viints,",
+     "now": "vants,"
+    },
+    "22.5": {
+     "was": "fi}.",
+     "now": ""
+    },
+    "23.0": {
+     "was": "etc.",
+     "now": "etc. [1]."
+    },
+    "24.0": {
+     "was": "st",
+     "now": "I"
+    },
+    "24.6": {
+     "was": "5",
+     "now": "",
+     "after": "Jerusalem,"
+    },
+    "24.9": {
+     "was": "e",
+     "now": "",
+     "after": "down"
+    },
+    "24.15": {
+     "was": "s",
+     "now": "",
+     "after": "(;od,"
+    },
+    "24.16": {
+     "was": "(;od,",
+     "now": "God,"
+    },
+    "24.21": {
+     "was": "idorned",
+     "now": "adorned"
+    },
+    "25.0": {
+     "was": "R.",
+     "now": "℟"
+    },
+    "26.3": {
+     "was": "plaice!",
+     "now": "place!"
+    },
+    "26.13": {
+     "was": "ind",
+     "now": "and"
+    },
+    "43.1": {
+     "was": "Surely",
+     "now": "* Surely"
+    },
+    "43.4": {
+     "was": "!",
+     "now": "",
+     "after": "is"
+    },
+    "43.12": {
+     "was": ":",
+     "now": ""
+    },
+    "44.0": {
+     "was": "Pp.",
+     "now": "",
+     "after": "T."
+    },
+    "44.2": {
+     "was": ":",
+     "now": ""
+    },
+    "45.3": {
+     "was": "Alleluia.",
+     "now": "P.T. Alleluia."
+    },
+    "45.4": {
+     "was": "©",
+     "now": "",
+     "after": "When"
+    },
+    "45.7": {
+     "was": "|",
+     "now": ""
+    },
+    "46.0": {
+     "was": "Y.",
+     "now": ""
+    },
+    "47.5": {
+     "was": "|",
+     "now": ""
+    },
+    "48.0": {
+     "was": "|",
+     "now": ""
+    },
+    "49.3": {
+     "was": "-",
+     "now": "–"
+    },
+    "49.5": {
+     "was": "-",
+     "now": "–"
+    },
+    "50.0": {
+     "was": "Outside",
+     "now": "",
+     "after": "P."
+    },
+    "50.1": {
+     "was": "P.",
+     "now": "",
+     "after": "T."
+    },
+    "50.2": {
+     "was": "T.",
+     "now": ""
+    },
+    "51.1": {
+     "was": "-",
+     "now": "–"
+    },
+    "51.2": {
+     "was": "|",
+     "now": "Outside P.T."
+    },
+    "51.5": {
+     "was": "Alleluia.",
+     "now": "P.T. Alleluia."
+    },
+    "51.6": {
+     "was": "|",
+     "now": ""
+    },
+    "53.0": {
+     "was": "lest",
+     "now": "Blest"
+    },
+    "53.3": {
+     "was": ")",
+     "now": ""
+    },
+    "54.0": {
+     "was": "5",
+     "now": ""
+    },
+    "55.5": {
+     "was": ";",
+     "now": "",
+     "after": "most"
+    },
+    "56.0": {
+     "was": "|",
+     "now": ""
+    },
+    "57.5": {
+     "was": "|",
+     "now": "",
+     "after": "Made"
+    },
+    "57.16": {
+     "was": ":",
+     "now": "",
+     "after": "circled"
+    },
+    "57.18": {
+     "was": "|",
+     "now": "",
+     "after": "As"
+    },
+    "58.0": {
+     "was": "|",
+     "now": ""
+    }
+   },
+   "checked": 1
+  }
+ }
+}
