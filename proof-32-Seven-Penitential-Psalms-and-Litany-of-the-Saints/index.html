@@ -2047,8 +2047,23 @@ function buildGrid(col){
     if(opens || !rows.length) rows.push(row);
     else for(let i = 0; i < n; i++) rows[rows.length - 1][i].push(...row[i]);
   }
+  /* A column empty on every row is not a column. At the fold it is the next
+     leaf showing at the edge of the scan, which is what Max saw. `as_table`
+     in `structure.py` drops it too, so the sheet and the book agree. */
+  /* A column that is mostly stray ink is not a column. At the fold it is the
+     next leaf showing at the edge of the scan, which is what Max saw on the
+     calendar. `as_table` in `structure.py` uses the same test. */
+  const live = [];
+  for(let i = 0; i < n; i++){
+    let all = 0, stray = 0;
+    for(const r of rows) for(const el of r[i]){ all++; if(el.dataset.s) stray++; }
+    if(all && stray * 2 <= all) live.push(i);
+  }
+  const shown = live.length && live.length < n
+      ? rows.map(r => live.map(i => r[i])) : rows;
+
   const table = document.createElement("table");
-  for(const row of rows){
+  for(const row of shown){
     const tr = document.createElement("tr");
     for(const cell of row){
       const td = document.createElement("td");
