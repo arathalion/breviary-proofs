@@ -1,0 +1,22 @@
+# Pages this book does not set in two columns.
+#
+# The column finder splits every page down the middle, because that is what
+# 2,376 pages of this book want. On these it is wrong, and every line comes
+# back cut in half.
+#
+# There is no detector here, and that is on purpose. Five attempts to find
+# these pages by measurement have failed, and a sixth was tried on 2026-08-17
+# and failed as well: on the pages Max named, ink at the middle of the measure
+# runs 6% to 20%, and on ordinary two column pages it runs 7% to 19%. The two
+# do not separate. Reading two columns as one interleaves them, which is a
+# worse fault and a quieter one, so a wrong guess costs more than this list.
+#
+# A known list beats a silent mistake on an unknown list. Add a page when a
+# proofreader reports one. `*` stands for any run of characters.
+#
+# pattern                                reason
+03-Liturgical-Calendar-*                 the calendar, a table of narrow columns
+02-The-Year-and-Its-Parts-0001b          the Bull of Clement XII, set full width
+02-The-Year-and-Its-Parts-0002a          the Bull of Clement XII, set full width
+02-The-Year-and-Its-Parts-0009b          a table of the movable feasts
+00-Preliminary-Pages-0002b               a full page, not two columns

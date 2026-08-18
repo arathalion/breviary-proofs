@@ -1,0 +1,27 @@
+# Pages this book's own deskew leaves crooked, and the turn they want.
+#
+# `pagelib.deskew` tries quarter degree steps and gets 2,328 of 2,388
+# pages exactly right. On 60 it leaves 0.3 degrees or more. Those 60 were
+# read both ways on 2026-08-17 and the better reading kept: 16 came out
+# clearly better turned, 18 clearly worse, 26 much the same. So this is a
+# list and not a rule. Turning every page by what a finer search asks for
+# makes the book worse, by 0.48 of a point of confidence on the 16 pages
+# that ask for most.
+#
+# page                                                        degrees
+01-General-Rubrics-0007a                                   -0.70
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0012b -0.40
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0053a -0.30
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0076b -0.40
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0112a +0.30
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0189a +0.30
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0219a -0.40
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0245b -0.40
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0258a -0.40
+12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0272a +0.40
+13-Proper-of-the-Season-Vol-2-Trinity-to-24th-Sunday-after-Pentecost-0047a +0.60
+13-Proper-of-the-Season-Vol-2-Trinity-to-24th-Sunday-after-Pentecost-0085b +0.30
+13-Proper-of-the-Season-Vol-2-Trinity-to-24th-Sunday-after-Pentecost-0118b +0.90
+15-Proper-of-the-Saints-Vol-1-0149a                        -0.30
+15-Proper-of-the-Saints-Vol-1-0157a                        -0.30
+16-Proper-of-the-Saints-Vol-2-0161a                        -1.40

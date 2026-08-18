@@ -1,0 +1,29 @@
+# The scans and everything made from them. 23 GB, and every byte of it can be
+# made again from the PDFs and these tools. What cannot be made again is the
+# tools, the hand-set lists, and what a person wrote: those are tracked.
+pages/
+pages.old/
+drafts/
+drafts.old/
+structured/
+structured.old/
+tex/parts/
+tex/editions/
+*.pdf
+*.aux
+*.log
+.venv/
+__pycache__/
+.DS_Store
+
+# docs/ holds the proof sheets and is what GitHub Pages serves. It is
+# tracked: the sheets are the only way a person meets this book.
+
+# Made in seconds by the tool that names them.
+witness.json
+check.json
+columns-check.html
+plan.built.html
+audit-final.txt
+compile-all.log
+pages-prepare-2.log

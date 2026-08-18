@@ -1,0 +1,575 @@
+<title>Re-typesetting the Dominican Breviary</title>
+<style>
+@font-face{font-family:"EBG";src:url(data:font/otf;base64,__FONT_REGULAR__) format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"EBG";src:url(data:font/otf;base64,__FONT_ITALIC__) format("opentype");font-weight:400;font-style:italic;font-display:swap}
+
+:root{
+  --ground:#FCFBF9;
+  --ink:#17140F;
+  --rubric:#B03127;
+  --muted:#6E675E;
+  --rule:#E1DBD2;
+  --raise:#F6F3EE;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --serif:"EBG",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#15130F;
+    --ink:#E9E3D8;
+    --rubric:#E47966;
+    --muted:#9A9086;
+    --rule:#2F2A23;
+    --raise:#1D1A15;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#15130F;
+  --ink:#E9E3D8;
+  --rubric:#E47966;
+  --muted:#9A9086;
+  --rule:#2F2A23;
+  --raise:#1D1A15;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.62;
+  margin:0;
+  padding:0 1.5rem 6rem;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:56rem;margin:0 auto}
+
+/* ---- masthead ------------------------------------------------------ */
+header{
+  padding:5rem 0 2rem;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:3rem;
+}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--rubric);
+  margin:0 0 1.25rem;
+}
+h1{
+  font-size:clamp(2.4rem,6vw,3.6rem);
+  line-height:1.06;
+  font-weight:400;
+  margin:0 0 1rem;
+  text-wrap:balance;
+  letter-spacing:-.012em;
+}
+.standfirst{
+  font-size:1.22rem;
+  color:var(--muted);
+  margin:0;
+  max-width:34em;
+  text-wrap:pretty;
+}
+
+/* ---- sections with a rubric margin --------------------------------- */
+section{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:.4rem 2.5rem;
+  padding:2.5rem 0;
+  border-bottom:1px solid var(--rule);
+}
+section:last-of-type{border-bottom:0}
+@media (min-width:900px){
+  section{grid-template-columns:8.5rem 1fr}
+}
+.mark{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--rubric);
+  padding-top:.55rem;
+  align-self:start;
+}
+.body{min-width:0;max-width:40em}
+h2{
+  font-size:1.85rem;
+  font-weight:400;
+  line-height:1.18;
+  margin:0 0 1rem;
+  text-wrap:balance;
+  letter-spacing:-.008em;
+}
+h3{
+  font-size:1.2rem;
+  font-weight:400;
+  font-style:italic;
+  margin:2rem 0 .5rem;
+  color:var(--ink);
+}
+p{margin:0 0 1rem}
+.body>p:last-child{margin-bottom:0}
+strong{font-weight:400;color:var(--rubric)}
+em{font-style:italic}
+code,.mono{font-family:var(--mono);font-size:.82em;color:var(--muted)}
+
+/* ---- lists --------------------------------------------------------- */
+ul,ol{margin:0 0 1rem;padding-left:1.25rem}
+li{margin-bottom:.4rem}
+li::marker{color:var(--rubric)}
+
+/* ---- key facts ----------------------------------------------------- */
+.facts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));
+  gap:1.75rem 1.5rem;
+  margin:.5rem 0 1.75rem;
+  padding:0;
+}
+.facts div{margin:0}
+.facts dt{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:.3rem;
+}
+.facts dd{
+  margin:0;
+  font-size:1.6rem;
+  line-height:1.15;
+  font-variant-numeric:tabular-nums;
+}
+.facts dd small{display:block;font-size:.8rem;color:var(--muted);line-height:1.4;margin-top:.15rem}
+
+/* ---- tables -------------------------------------------------------- */
+.scroll{overflow-x:auto;margin:0 0 1rem}
+table{
+  border-collapse:collapse;
+  width:100%;
+  font-size:.94rem;
+  font-variant-numeric:tabular-nums;
+}
+th,td{
+  text-align:left;
+  padding:.5rem .85rem .5rem 0;
+  border-bottom:1px solid var(--rule);
+  vertical-align:baseline;
+}
+th{
+  font-family:var(--mono);
+  font-weight:400;
+  font-size:.66rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border-bottom-color:var(--ink);
+}
+td.num{text-align:right;padding-right:0}
+th.num{text-align:right;padding-right:0}
+tr.sum td{border-bottom:0;border-top:1px solid var(--ink);color:var(--rubric)}
+
+/* ---- status chips -------------------------------------------------- */
+.chip{
+  font-family:var(--mono);
+  font-size:.62rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.15rem .45rem;
+  border:1px solid currentColor;
+  white-space:nowrap;
+}
+.done{color:var(--rubric)}
+.now{color:var(--ink)}
+.todo{color:var(--muted)}
+
+/* ---- stage list ---------------------------------------------------- */
+.stage{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.15rem 1rem;
+  padding:1rem 0;
+  border-top:1px solid var(--rule);
+}
+.stage:first-of-type{border-top:0;padding-top:.25rem}
+.stage .n{
+  font-family:var(--mono);
+  font-size:.95rem;
+  color:var(--rubric);
+  padding-top:.15rem;
+}
+.stage h4{margin:0 0 .2rem;font-size:1.05rem;font-weight:400}
+.stage p{margin:0;font-size:.95rem;color:var(--muted)}
+.stage .meta{margin-top:.3rem}
+
+/* ---- decisions ----------------------------------------------------- */
+.ask{
+  border-left:2px solid var(--rubric);
+  padding:.1rem 0 .1rem 1.1rem;
+  margin:0 0 1.5rem;
+}
+.ask h4{margin:0 0 .3rem;font-size:1.05rem;font-weight:400}
+.ask p{margin:0;font-size:.95rem;color:var(--muted)}
+
+footer{
+  padding:3rem 0 0;
+  color:var(--muted);
+  font-size:.9rem;
+}
+a{color:var(--rubric)}
+:focus-visible{outline:2px solid var(--rubric);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Project plan &middot; 16 August 2026</p>
+  <h1>Re-typesetting the Dominican Breviary</h1>
+  <p class="standfirst">A plan to turn 1,090 photographic scans of the 1967 English Dominican Breviary into a typeset book. For personal use, and for a few friends.</p>
+</header>
+
+<section>
+  <div class="mark">Ground truth</div>
+  <div class="body">
+    <h2>What the scans actually are</h2>
+    <p>I measured these facts. I did not assume them. They control every later decision.</p>
+
+    <dl class="facts">
+      <div><dt>Parts held</dt><dd>31<small>of 38 published</small></dd></div>
+      <div><dt>Scan images</dt><dd>1,090<small>1.16 GB</small></dd></div>
+      <div><dt>Book pages</dt><dd>~2,100<small>two per scan</small></dd></div>
+      <div><dt>Original trim</dt><dd>104&times;165<small>millimetres, measured</small></dd></div>
+    </dl>
+
+    <p>The scans carry <strong>no text layer</strong>. Every page needs OCR. Nothing can be copied.</p>
+    <p>Each scan holds a two page spread. Each book page holds two columns. So one scan image contains four columns of type.</p>
+    <p><strong>The ink colour carries the meaning.</strong> Black is the text that you say. Red is the rubric that tells you how and when to say it. The two colours mix inside a single sentence. Ordinary OCR discards colour, and so it destroys the structure of the book. This is the central technical fact of the project.</p>
+
+    <h3>Two scanners, two levels of quality</h3>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Source</th><th>Parts</th><th class="num">Scans</th><th class="num">Share</th><th>Quality</th></tr></thead>
+        <tbody>
+          <tr><td>HP flatbed</td><td>All others</td><td class="num">674</td><td class="num">62%</td><td>300&ndash;400 ppi. Flat, even, good.</td></tr>
+          <tr><td>Konica camera</td><td>13, 14, 16, 17, 18</td><td class="num">416</td><td class="num">38%</td><td>200 ppi photographs. Hands, ribbons, page curve, show-through.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The flatbed scans give a true physical scale. That is how I measured the trim size. The camera files cannot be measured this way, because the scale changes with the distance of the camera.</p>
+  </div>
+</section>
+
+<section>
+  <div class="mark">The gap</div>
+  <div class="body">
+    <h2>The Psalter is missing</h2>
+    <p>Seven files do not download: Sunday to Saturday. They are the weekly Psalter.</p>
+    <p>The cause is technical, not accidental. They are Google Drive files from before 2017. Google now demands a <code>resourcekey</code> in the link. The blog never published one. The link therefore fails for everybody, and Drive answers <em>You need access</em>.</p>
+    <p>You have asked the site owner for access. That request is open.</p>
+    <p><strong>This gap blocks a usable book.</strong> The Psalter is the weekly cycle of psalms at every hour. It is the part that you open most. A breviary without it cannot be prayed. Plan the work so that the Psalter can drop into place when it arrives, but do not promise a finished book until it does.</p>
+    <p>If the owner does not answer, three routes remain: transcribe the Psalter from the web page version on the same blog; scan a paper copy; or use a different English psalter and accept that it does not match the 1967 text.</p>
+  </div>
+</section>
+
+<section>
+  <div class="mark">The object</div>
+  <div class="body">
+    <h2>The book we are making</h2>
+    <p>You asked for a standard breviary size. The original is already one. So we match it exactly.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Specification</th><th>Value</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Trim</td><td>104 &times; 165 mm</td><td>Measured across 18 pages.</td></tr>
+          <tr><td>Text block</td><td>77.5 mm wide</td><td>Two columns of 37.6 mm, gutter 2.2 mm. Measured.</td></tr>
+          <tr><td>Margins</td><td>10 mm inner, 16.5 mm outer</td><td>Measured. The inner is 1 mm wider than the original, for the binding.</td></tr>
+          <tr><td>Type</td><td>STIX Two Text, 9 pt on 9.12 pt</td><td>It carries the ℣ and ℟ marks, and it matches the weight of the original.</td></tr>
+          <tr><td>Lines per column</td><td>41</td><td>The same as the original. The leading is measured, not chosen.</td></tr>
+          <tr><td>Colours</td><td>Black and vermilion</td><td>The rubric colour is structure, not decoration.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>How the typeface was chosen</h3>
+    <p>Only three installed faces carry the ℣ and ℟ marks. Of those, EB Garamond is narrow and light, and it looked wrong beside the original. STIX Two Text is Times-like, sturdy and wide-set, and it matches.</p>
+    <p>The size was set by comparing renders against the scan at true physical size. Two other methods were tried, and both mislead. Characters per line fails, because the original is justified in a narrow measure with very loose word spacing. The x-height read off the scan fails, because printed ink spreads while a fresh render is crisp, so the two are not comparable. That method was wrong by about 8 per cent.</p>
+    <p>The leading is the reliable measurement. Line spacing survives blur. It gives 41 lines to a column, as the original has.</p>
+
+    <h3>How the original was split</h3>
+    <p>This is no longer an estimate. The scans carry the answer, in the folio numbers printed at the head of every page. The reader discards that strip, so nothing had looked at it until now.</p>
+    <p>The book uses <strong>two series of page numbers</strong>: plain ones such as 234, and bracketed ones such as [102]. Reading the folio off the header of every part gives this.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Part</th><th>Series</th><th class="num">From</th><th class="num">To</th><th class="num">Scanned pages</th><th class="num">Span</th></tr></thead>
+        <tbody>
+          <tr><td>Ordinary of the Divine Office</td><td>plain</td><td class="num"></td><td class="num">17</td><td class="num">18</td><td class="num"></td></tr>
+          <tr><td>Proper of the Season, Vol 1</td><td>plain</td><td class="num">216</td><td class="num">791</td><td class="num">576</td><td class="num">575</td></tr>
+          <tr><td>Proper of the Saints, Vol 1</td><td>plain</td><td class="num">792</td><td class="num">1114</td><td class="num">324</td><td class="num">322</td></tr>
+          <tr><td>Proper of the Season, Vol 2</td><td>plain</td><td class="num">216</td><td class="num">506</td><td class="num">294</td><td class="num">290</td></tr>
+          <tr><td>Prayers and Homilies</td><td>plain</td><td class="num">~507</td><td class="num">~529</td><td class="num">24</td><td class="num"></td></tr>
+          <tr><td>Proper of the Saints, Vol 2</td><td>plain</td><td class="num">530</td><td class="num">987</td><td class="num">458</td><td class="num">457</td></tr>
+          <tr><td>Office of the Saints OP</td><td>plain</td><td class="num">987</td><td class="num">1027</td><td class="num">42</td><td class="num">40</td></tr>
+          <tr class="sum"><td>Commons and accessory offices</td><td>bracketed</td><td class="num">[2]</td><td class="num">[245]</td><td class="num">256</td><td class="num">244</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The span is what makes this trustworthy. On every large part the distance between the first folio and the last equals the number of scanned pages, exactly. That does not happen by accident.</p>
+
+    <p><strong>Both Vol 1 and Vol 2 begin at plain page 216.</strong> Two volumes, each restarting, each carrying the same first 215 pages. So the original is a two volume set, built like this.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="num">Pages</th><th>Volume I</th><th>Volume II</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1&ndash;17</td><td>Ordinary</td><td>the same Ordinary</td></tr>
+          <tr><td class="num">18&ndash;215</td><td>Psalter, seven days</td><td>the same Psalter</td></tr>
+          <tr><td class="num">216&ndash;</td><td>Season, Advent to Trinity</td><td>Season, Trinity to the 24th Sunday</td></tr>
+          <tr><td class="num"></td><td>Saints, Vol 1</td><td>Prayers and Homilies, Saints Vol 2, Office of the Saints OP, On the Missions</td></tr>
+          <tr class="sum"><td class="num">[2]&ndash;[245]</td><td>Commons, Little Office, Office of the Dead</td><td>the same [2]&ndash;[245]</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The bracketed series exists <em>because</em> that section is repeated. A block of pages printed identically in two volumes cannot share the main pagination, so the printer gave it its own. That is why the Commons carry brackets and the Propers do not, and it is the strongest single piece of evidence here.</p>
+    <p>It also explains the seven Psalter files that will not download. They are pages 18 to 215, about 198 pages, some 28 for each day. The blog holds them as separate files for the same reason the printer set them apart: they belong to both volumes.</p>
+    <p>Volume I comes to about 1,360 pages of the book, Volume II to about 1,290.</p>
+
+    <h3>What that means for this edition</h3>
+    <p>The original repeated the Ordinary, the Psalter and the Commons in each of two volumes. It managed two, on bible paper, sewn. Whether that is reachable here is a question about paper, and the answer is arithmetic.</p>
+    <p>All three editions are built. <code>tools/editions.py</code> makes them from the same transcription, so nothing has to be transcribed twice.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Edition</th><th class="num">Volumes</th><th class="num">Pages each</th><th class="num">On bible paper</th><th class="num">On digital stock</th></tr></thead>
+        <tbody>
+          <tr><td>One book</td><td class="num">1</td><td class="num">2,322</td><td class="num">58 mm</td><td class="num">99 mm</td></tr>
+          <tr><td>Two volumes</td><td class="num">2</td><td class="num">1,418 &middot; 1,491</td><td class="num">35 &middot; 37 mm</td><td class="num">60 &middot; 63 mm</td></tr>
+          <tr class="sum"><td>Four volumes</td><td class="num">4</td><td class="num">893 &ndash; 1,139</td><td class="num">22 &ndash; 28 mm</td><td class="num">38 &ndash; 48 mm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Two volumes on bible paper is the 1967 edition's own size</strong>, 35 and 37 mm against its 34. That is no longer an aspiration; it is what the files measure. On ordinary digital stock, which is what five copies can actually be printed on, the four volume edition is 38 to 48 mm. Thick for a page 104 mm wide, but a book you can hold.</p>
+    <p>Those figures moved a long way in one evening, because the typesetting was a third longer than it needed to be and none of the checks could see it. Every line of the scan was being set as its own paragraph, so the text never flowed; a rule outside the type was reproduced as a rule inside it; and a red mark inside a black line broke the paragraph around it. Fixing the three took the book from 3,291 pages to 2,340 without losing a word. All three are written up in <code>tools/README.md</code>.</p>
+
+    <h3>The binding decides the split, not the other way round</h3>
+    <p>A sewn binding opens flat, so the inner margin can stay narrow. A glued binding does not, so the margin must grow, and at 104 mm wide a glued book of 1,300 pages is close to unusable. The page count also sets the paper, and the paper sets how many volumes there are.</p>
+    <p>So the order is: find a binder, ask their greatest block thickness for one volume and whether they sew, then split to fit that number. Everything else follows.</p>
+    <p>Almost every book manufacturer has a minimum of 100 to 500 copies, so none of them will take an order for five. A hand bookbinder will bind one. The Guild of Book Workers keeps a searchable directory at <code>guildofbookworkers.org/find</code>, and binders who rebind altar missals already solve this exact problem &mdash; thin paper, rounded spine, ribbons, heavy daily use.</p>
+  </div>
+</section>
+
+<section>
+  <div class="mark">Pipeline</div>
+  <div class="body">
+    <h2>Four stages, and what each one does</h2>
+    <p>The pipeline exists and it works from end to end. I proved it on a test page before writing this plan.</p>
+
+    <div class="stage">
+      <div class="n">1</div>
+      <div>
+        <h4>Prepare the pages</h4>
+        <p>Trim the dark background, cut the spread at the fold, and straighten each page. Handles both scanner types.</p>
+        <p class="meta"><span class="chip now">Running now</span> <code>tools/prepare.py</code></p>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="n">2</div>
+      <div>
+        <h4>Separate the ink</h4>
+        <p>Split the red layer from the black layer. This keeps the rubric structure that ordinary OCR would lose.</p>
+        <p class="meta"><span class="chip done">Built</span> <code>tools/inkseparate.py</code></p>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="n">3</div>
+      <div>
+        <h4>Read the page into markup</h4>
+        <p>Each column is read on its own, and each ink layer within it is read on its own. The engine never sees two columns at once, so it cannot merge them, and never sees two colours at once, so it cannot lose the rubrics. The result is a draft, not a text.</p>
+        <p class="meta"><span class="chip done">Built</span> <code>tools/ocr.py</code> &middot; <code>schema/markup.md</code></p>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="n">4</div>
+      <div>
+        <h4>Check the draft</h4>
+        <p>The proof sheet puts each column of the scan beside what the engine read, and marks every word it was unsure of. On the Ordinary that is 12 per cent of words, so a person checks about 40 words on a page instead of re-reading 330.</p>
+        <p class="meta"><span class="chip done">Built</span> <code>tools/proof.py</code></p>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="n">5</div>
+      <div>
+        <h4>Set the type</h4>
+        <p>Convert the markup to LaTeX and compile with LuaLaTeX. Two columns, red rubrics, drop caps, and the ℣ and ℟ marks all work.</p>
+        <p class="meta"><span class="chip done">Built</span> <code>tools/totex.py</code> &middot; <code>tex/breviary.cls</code></p>
+      </div>
+    </div>
+
+    <h3>Why a markup format sits in the middle</h3>
+    <p>Do not send OCR output straight to LaTeX. The markup holds the meaning of the page. You can change the trim size, the typeface, or the volume split at any later time, and the transcription never changes. The transcription is the expensive part, so protect it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="mark">Sequence</div>
+  <div class="body">
+    <h2>The order of work</h2>
+    <p>The order matters. It puts a usable book in your hands early, and it finds problems while they are still cheap to fix.</p>
+
+    <div class="stage"><div class="n">I</div><div>
+      <h4>Finish the page preparation</h4>
+      <p>Run all 31 parts to single page images. About 2,100 images and 5.7 GB. This is running now and needs no attention.</p></div></div>
+
+    <div class="stage"><div class="n">II</div><div>
+      <h4>Retune the class to 104 &times; 165 mm &mdash; done</h4>
+      <p>Set the new trim and the smaller type. Fix two known defects: the drop cap breaks across a column, and the mediant star is too small.</p></div></div>
+
+    <div class="stage"><div class="n">III</div><div>
+      <h4>Pilot on the Ordinary</h4>
+      <p>Eighteen pages. This tests the markup against real text rather than my test file. Real pages will show structures I have not planned for.</p></div></div>
+
+    <div class="stage"><div class="n">IV</div><div>
+      <h4>Extend the markup</h4>
+      <p>Add whatever the pilot finds. Hymns, calendar tables, and psalm tones are the likely gaps.</p></div></div>
+
+    <div class="stage"><div class="n">V</div><div>
+      <h4>Transcribe, smallest parts first</h4>
+      <p>Parts 00 to 04 and 19 to 37 hold about 660 pages. Together they make a complete Ordinary, Commons and Appendices. That is a real book you can use, long before the Propers are done.</p></div></div>
+
+    <div class="stage"><div class="n">VI</div><div>
+      <h4>Transcribe the Propers, then bind</h4>
+      <p>The Propers are about 1,440 pages and hold the bulk of the work. Proof, assemble the volumes, and print.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="mark">Accuracy</div>
+  <div class="body">
+    <h2>How we keep it correct</h2>
+    <p>This is a prayer book. A wrong word is worse than a missing one. Four rules protect the text.</p>
+    <ul>
+      <li><strong>Never guess.</strong> An unreadable word becomes <code>&lt;?&gt;</code>. It prints as a red <em>[?]</em> in the book. It stays visible until a person resolves it.</li>
+      <li><strong>Proof against the scan.</strong> Each typeset page is checked beside its source image. I will build a side by side proof sheet for this.</li>
+      <li><strong>Give the camera pages a second pass.</strong> They are 38% of the book and the lowest quality. Expect more errors there.</li>
+      <li><strong>Mark every colour change.</strong> A rubric set as text, or text set as a rubric, is a real error. It changes what a reader will say aloud.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="mark">Cost</div>
+  <div class="body">
+    <h2>Effort, honestly</h2>
+    <p>Every stage is now built and runs unattended. The reading of 2,100 pages costs machine time, not your time. The checking is what costs your time.</p>
+    <p>The Ordinary gives the first real figures. Seventeen pages held 5,592 words, so a page averages 330 words. The whole book is therefore nearer <strong>700,000 words</strong> than the million I first estimated.</p>
+    <p>Of those words, 12 per cent came back doubtful and want a person. That is about 40 words on a page. Across the book it is some 84,000 words to check, which is the real size of the task.</p>
+    <p>The rate is uneven, and that tells you where to look. The best page needed 5 per cent checked, the worst 28 per cent. Pages heavy in red rubric fare worst, because red ink is thinner on the page than black.</p>
+    <p>This is why the order in Sequence matters. After about 660 pages you hold a usable book. The remaining 1,440 pages extend it, but they do not block it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="mark">Risk</div>
+  <div class="body">
+    <h2>What could go wrong</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Risk</th><th>Effect</th><th>What we do</th></tr></thead>
+        <tbody>
+          <tr><td>The Psalter never arrives</td><td>The book cannot be prayed</td><td>Build the frame so it drops in later. Keep the three fallback routes open.</td></tr>
+          <tr><td>Camera pages read badly</td><td>Errors across 38% of the book</td><td>Second pass. Correct the page curve if the accuracy is poor.</td></tr>
+          <tr><td>Unknown page structures</td><td>The markup cannot hold them</td><td>The pilot in stage III exists to find these early.</td></tr>
+          <tr><td>Effort is underestimated</td><td>The project stalls part way</td><td>Small parts first, so a usable book exists early.</td></tr>
+          <tr><td>Copyright</td><td>Legal exposure</td><td>The 1967 translation is probably still in copyright. Keep it private. Do not publish it and do not sell it.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="mark">Later phase</div>
+  <div class="body">
+    <h2>The Divinum Officium fork</h2>
+    <p><strong>Deferred by decision.</strong> The reprint comes first. This section records what I found, so that the later phase starts from facts and not from memory.</p>
+
+    <h3>The Dominican rite is already there</h3>
+    <p><code>Ordo Praedicatorum - 1962</code> is already a version that the engine offers. The rubrics, the calendar and the Latin text largely exist. You would not build a Dominican office from nothing.</p>
+    <p>The English is the hole. Compare the file counts:</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Language</th><th class="num">Dominican</th><th class="num">Roman</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>Latin</td><td class="num">579</td><td class="num">1,694</td><td>Substantial.</td></tr>
+          <tr><td>Polish</td><td class="num">165</td><td class="num">1,251</td><td>Partial.</td></tr>
+          <tr><td>Czech</td><td class="num">12</td><td class="num">843</td><td>Fragments.</td></tr>
+          <tr class="sum"><td>English</td><td class="num">15</td><td class="num">1,307</td><td>Almost nothing.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The 15 English Dominican files cover a few days of Lent and Easter. <strong>Your breviary is the missing English side of an office that already runs in Latin.</strong> That is a rare and useful fit.</p>
+    <p>The data format helps too. The files are plain text, divided by simple <code>[Section]</code> markers. Our converter can write them.</p>
+
+    <h3>One decision must come first, and it is not technical</h3>
+    <p><strong>A public fork publishes the text.</strong> That is a different act from a private book for a few friends. The 1967 English translation is probably still in copyright. The repository carries no licence, and its own content is largely old enough to be free. Adding in-copyright text to a public fork distributes it to everybody.</p>
+    <p>Three routes stay open. Keep the fork private, and enjoy the office yourself. Ask the rights holder for permission before any public push. Or contribute only the parts that carry no copyright, such as structure and rubrics.</p>
+    <p>I will not create a fork until you choose. This is your decision, not mine, but you should make it with the consequence in view.</p>
+
+    <h3>Two technical mismatches</h3>
+    <p>The engine version is <em>1962</em>. Your book is <em>1967</em>. The Dominican office changed between them. Some text will not map, and a new version entry may be needed.</p>
+    <p>The data models differ in shape. Divinum Officium is addressed by liturgical day and hour. A printed breviary is addressed by page. To place a page correctly you must know which day and which hour it serves.</p>
+
+    <h3>The one thing to carry over now</h3>
+    <p>The markup format already protects us. Divinum Officium is a second output, not a second transcription. One reading of a page can feed both the printed book and the web office.</p>
+    <p>But the markup should gain <strong>liturgical addressing</strong> while we transcribe. It records page structure today. It should also record the day, the hour and the part that each block serves.</p>
+    <p>Write it in from the start. The running head of every page already names the office, so the cost is close to nothing. Adding it after the fact means opening all 2,100 pages a second time.</p>
+  </div>
+</section>
+
+<section>
+  <div class="mark">Your call</div>
+  <div class="body">
+    <h2>Decisions I need from you</h2>
+
+    <div class="ask">
+      <h4>1. How many volumes?</h4>
+      <p>The original used two, each repeating the Ordinary, the Psalter and the Commons. That is measured now, not guessed. Two volumes of about 1,300 pages need bible paper and a binder who sews. More volumes allow ordinary paper and an ordinary printer. Answer the binding question first: it decides this one.</p>
+    </div>
+    <div class="ask">
+      <h4>2. How will you print and bind it?</h4>
+      <p>This is the question that blocks the most. It sets the inner margin, the paper, and the largest volume anyone will bind, which in turn sets how many volumes there are. Get one quote and all three fall out. Sewn and flat-opening, or glued and cheaper.</p>
+    </div>
+    <div class="ask">
+      <h4>3. Do you agree with the order of work?</h4>
+      <p>I propose the small parts first, to reach a usable book early. The alternative is to follow the order of the book from the first page.</p>
+    </div>
+    <div class="ask">
+      <h4>4. Shall I start the pilot?</h4>
+      <p>Eighteen pages of the Ordinary. It answers the accuracy question with real numbers, and it costs little.</p>
+    </div>
+    <div class="ask">
+      <h4>5. Public fork, or private? &mdash; deferred</h4>
+      <p>This one waits for the later phase. Note only that a public fork would publish the 1967 translation, and a private fork would not. Nothing in the reprint work depends on the answer.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Prepared for Max Doty. All page counts beyond the 1,090 measured scans are estimates, and they will move once the transcription begins.</p>
+</footer>
+
+</div>
