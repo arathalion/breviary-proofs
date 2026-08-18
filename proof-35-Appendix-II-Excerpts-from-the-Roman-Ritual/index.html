@@ -114,8 +114,13 @@ button.sop.on{background:var(--goodbg);color:var(--good);border-color:var(--good
 .col.setting .guides{pointer-events:auto;cursor:col-resize;
      background:linear-gradient(var(--warnbg),var(--warnbg));opacity:.85}
 .guide{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;
-     background:var(--warn);pointer-events:auto;cursor:pointer}
+     background:var(--warn);pointer-events:auto;cursor:ew-resize;
+     transform-origin:center}
 .guide:hover{width:6px;margin-left:-3px}
+.lean{position:absolute;right:.3rem;bottom:.3rem;pointer-events:auto;
+     font:11px ui-monospace,Menlo,monospace;color:var(--warn);
+     background:var(--bg);border:1px solid var(--warn);border-radius:3px;
+     padding:.1rem .35rem}
 .grid{width:100%;overflow-x:auto;margin-top:.6rem}
 .grid table{border-collapse:collapse;width:100%}
 .grid td{border:1px solid var(--rule);padding:.2rem .4rem;vertical-align:top;
@@ -1785,6 +1790,26 @@ who.addEventListener("change", () => localStorage.setItem("proof:who", who.value
 
    A guide is held as a fraction of the width of the scan, so it survives the
    image being shown at any size. */
+/* The columns of this book do not always stand upright on the scan. The rows
+   deskew to level and the columns still lean: on the calendar, up to 2.55
+   degrees, which carries a column 51 px sideways from the top of the page to
+   the bottom and drops a word into the cell next door.
+
+   It is a shear, not a rotation, so deskew cannot see it. Nor can anything
+   else: two searches for it were tried on 2026-08-17, one over the whole
+   measure and one over the narrow columns alone, and the better of them
+   agreed with the truth on 3 pages of 10. So a person leans the guides, and
+   sees them lie along the printed rules while doing it.
+
+   One page has one lean, and every guide on it shares it. A guide pivots
+   about its own middle, so its fraction still means where it crosses the
+   middle of the page. */
+function leanOf(p, col){
+  if(p.lean === undefined && col)
+    p.lean = parseFloat(col.querySelector(".shot").dataset.lean || "0") || 0;
+  return p.lean || 0;
+}
+
 function guidesOf(p, col){
   if(!p.cols && col){
     /* Nothing stored here yet, so open with whatever the book is being set
@@ -1799,14 +1824,57 @@ function drawGuides(col){
   const p = page(srcOf(col)), box = col.querySelector(".guides");
   if(!box) return;
   box.innerHTML = "";
+  const lean = leanOf(p, col);
   for(const f of guidesOf(p, col)){
     const g = document.createElement("div");
     g.className = "guide";
     g.style.left = (f * 100) + "%";
+    g.style.transform = "skewX(" + (-lean) + "deg)";
     g.dataset.f = f;
     box.appendChild(g);
   }
+  if(guidesOf(p, col).length){
+    const tag = document.createElement("div");
+    tag.className = "lean";
+    tag.textContent = "lean " + lean.toFixed(2) + "\u00b0";
+    tag.title = "drag a guide to lean them all; click here to stand them up";
+    box.appendChild(tag);
+  }
 }
+
+/* Drag a guide and every guide on the page leans with it, because one page
+   has one shear. The guide is made to pass through the pointer while staying
+   where it is at the middle of the page. */
+let leaning = null;
+document.addEventListener("mousedown", e => {
+  const g = e.target.closest(".col.setting .guide");
+  if(!g) return;
+  e.preventDefault();
+  leaning = {col: g.closest(".col"), box: g.parentNode, f: +g.dataset.f,
+             moved: false};
+});
+document.addEventListener("mousemove", e => {
+  if(!leaning) return;
+  const r = leaning.box.getBoundingClientRect();
+  const midY = r.top + r.height / 2;
+  const dy = midY - e.clientY;
+  if(Math.abs(dy) < r.height * 0.08) return;   /* too near the pivot to aim */
+  leaning.moved = true;
+  const x0 = r.left + leaning.f * r.width;
+  let deg = Math.atan2(e.clientX - x0, dy) * 180 / Math.PI;
+  deg = Math.max(-6, Math.min(6, Math.round(deg * 100) / 100));
+  const p = page(srcOf(leaning.col));
+  p.lean = deg;
+  drawGuides(leaning.col);
+});
+let dragged = false;
+document.addEventListener("mouseup", () => {
+  if(!leaning) return;
+  const col = leaning.col;
+  dragged = leaning.moved;
+  leaning = null;
+  if(dragged){ buildGrid(col); save(); }
+});
 
 /* Put the words where they sit on the page. A line of the page becomes a row
    unless it holds nothing but the last column, in which case it is the rest
@@ -1825,8 +1893,14 @@ function buildGrid(col){
   }
   const nw = +col.querySelector(".shot").dataset.nw || 1;
   const cells = cuts.map(f => f * nw);
+  /* Undo the lean before asking which cell a word is in. The guides are drawn
+     leaning; the sum is the same either way, and this keeps the arithmetic in
+     one place. `as_table` in `structure.py` must do the same. */
+  const t = Math.tan(leanOf(p, col) * Math.PI / 180);
+  const ys = words.map(el => +el.dataset.y);
+  const midY = (Math.min(...ys) + Math.max(...ys)) / 2;
   const cellOf = el => {
-    const mid = +el.dataset.x + (+el.dataset.w) / 2;
+    const mid = +el.dataset.x + (+el.dataset.w) / 2 - t * (midY - (+el.dataset.y));
     let c = 0;
     for(const x of cells) if(mid >= x) c++;
     return c;
@@ -1896,8 +1970,15 @@ document.addEventListener("click", e => {
     btn.textContent = on ? "done with the columns" : "set the columns";
     return;
   }
+  const t = e.target.closest(".lean");
+  if(t){
+    const col = t.closest(".col"), p = page(srcOf(col));
+    p.lean = 0; drawGuides(col); buildGrid(col); save(); return;
+  }
   const g = e.target.closest(".guide");
   if(g){
+    /* The click that ends a drag is not a click on the guide. */
+    if(dragged){ dragged = false; return; }
     const col = g.closest(".col"), p = page(srcOf(col));
     p.cols = guidesOf(p, col).filter(f => f !== +g.dataset.f);
     drawGuides(col); buildGrid(col); save(); return;
@@ -1978,7 +2059,8 @@ function out(){
     if(p.full || p.note || Object.keys(p.fix).length || Object.keys(p.ok).length
        || Object.keys(p.str || {}).length || (p.cols || []).length)
       pages[src] = {full:p.full, note:p.note, fix:p.fix, str:p.str || {},
-                    cols:p.cols || [], checked:Object.keys(p.ok).length};
+                    cols:p.cols || [], lean:p.lean || 0,
+                    checked:Object.keys(p.ok).length};
   }
   return {sheet:SHEET, who:who.value.trim(), pages:pages};
 }
