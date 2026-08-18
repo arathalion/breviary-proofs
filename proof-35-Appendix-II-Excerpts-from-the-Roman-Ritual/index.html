@@ -109,6 +109,19 @@ button.sop{font-size:12px;line-height:1;padding:.15rem .4rem;min-width:1.7rem}
 button.sop.on{background:var(--goodbg);color:var(--good);border-color:var(--good)}
 .sline.did{background:var(--goodbg)}
 .sline.did .stag{color:var(--good);font-weight:600}
+.shot{position:relative;display:inline-block;align-self:flex-start}
+.guides{position:absolute;inset:0;pointer-events:none}
+.col.setting .guides{pointer-events:auto;cursor:col-resize;
+     background:linear-gradient(var(--warnbg),var(--warnbg));opacity:.85}
+.guide{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;
+     background:var(--warn);pointer-events:auto;cursor:pointer}
+.guide:hover{width:6px;margin-left:-3px}
+.grid{width:100%;overflow-x:auto;margin-top:.6rem}
+.grid table{border-collapse:collapse;width:100%}
+.grid td{border:1px solid var(--rule);padding:.2rem .4rem;vertical-align:top;
+     font-size:.85rem}
+.grid tr:hover td{background:var(--bar)}
+.col.tabley{flex-basis:100%}
 .tagsum{font:11px ui-monospace,Menlo,monospace;color:var(--mute)}
 .tagsum b{color:var(--ink);font-weight:600}
 code{font-family:ui-monospace,Menlo,monospace;font-size:.9em}
@@ -1526,7 +1539,7 @@ try {
 let held = true;   /* is everything on this sheet in a file yet */
 
 function page(src){
-  if(!state.pages[src]) state.pages[src] = {full:false, note:"", fix:{}, ok:{}, str:{}};
+  if(!state.pages[src]) state.pages[src] = {full:false, note:"", fix:{}, ok:{}, str:{}, cols:[]};
   /* Sheets held before the structure gestures existed have no `str`. */
   if(!state.pages[src].str) state.pages[src].str = {};
   return state.pages[src];
@@ -1598,6 +1611,7 @@ function restore(){
     d.querySelector(".pagebar").classList.toggle("done", p.full);
     for(const line of d.querySelectorAll(".sline[data-b]"))
       paintLine(line, p.str[line.dataset.b]);
+    for(const col of d.querySelectorAll(".col.tabley")){ drawGuides(col); buildGrid(col); }
     strayCount(d);
   }
   tally();
@@ -1755,6 +1769,139 @@ const who = document.getElementById("who");
 who.value = localStorage.getItem("proof:who") || "";
 who.addEventListener("change", () => localStorage.setItem("proof:who", who.value.trim()));
 
+/* A table is not two columns of prose and it is not a run of words. The book
+   sets the calendar and a few other pages as a grid, and the reading comes
+   back as one flat stream, which nobody can correct.
+
+   The boundaries are on the page and a person can see them, so a person
+   places them. Six attempts to find the shape of a page by measurement have
+   failed on this book, and a seventh was tried on 2026-08-17: reading each
+   column of the calendar on its own scored worse than reading them together,
+   52 and 47 against 62. So this asks a person for four clicks instead.
+
+   A guide is held as a fraction of the width of the scan, so it survives the
+   image being shown at any size. */
+function guidesOf(p){ return p.cols || (p.cols = []); }
+
+function drawGuides(col){
+  const p = page(srcOf(col)), box = col.querySelector(".guides");
+  if(!box) return;
+  box.innerHTML = "";
+  for(const f of guidesOf(p)){
+    const g = document.createElement("div");
+    g.className = "guide";
+    g.style.left = (f * 100) + "%";
+    g.dataset.f = f;
+    box.appendChild(g);
+  }
+}
+
+/* Put the words where they sit on the page. A line of the page becomes a row
+   unless it holds nothing but the last column, in which case it is the rest
+   of the row above: on a calendar the day number stands once and the feast
+   beside it runs on for three lines. */
+function buildGrid(col){
+  const p = page(srcOf(col)), grid = col.querySelector(".grid");
+  if(!grid) return;
+  const cuts = guidesOf(p);
+  const words = [...col.querySelectorAll("w[data-x]")];
+  if(!cuts.length || !words.length){
+    for(const el of words) if(el._home) restoreWord(el);
+    grid.hidden = true;
+    col.querySelector(".read").hidden = false;
+    return;
+  }
+  const nw = +col.querySelector(".shot").dataset.nw || 1;
+  const cells = cuts.map(f => f * nw);
+  const cellOf = el => {
+    const mid = +el.dataset.x + (+el.dataset.w) / 2;
+    let c = 0;
+    for(const x of cells) if(mid >= x) c++;
+    return c;
+  };
+  const hs = words.map(el => +el.getAttribute("data-h") || 20).sort((a, b) => a - b);
+  const med = hs[hs.length >> 1] || 20;
+  const byY = [...words].sort((a, b) => (+a.dataset.y - +b.dataset.y)
+                                        || (+a.dataset.x - +b.dataset.x));
+  const lines = [];
+  for(const el of byY){
+    const last = lines[lines.length - 1];
+    if(last && Math.abs(+el.dataset.y - (+last[0].dataset.y)) <= med * 0.6) last.push(el);
+    else lines.push([el]);
+  }
+  /* One row of a table is not one line of the page. On a calendar the day
+     number stands once and the feast beside it runs on for three lines. The
+     widest column is the one that runs on, so a line that puts ink anywhere
+     to the left of it opens a row, and a line that does not is the rest of
+     the row above. */
+  const n = cells.length + 1;
+  const edges = [0].concat(cells, [nw]);
+  let key = 0, widest = 0;
+  for(let i = 0; i < n; i++){
+    const w = edges[i + 1] - edges[i];
+    if(w > widest){ widest = w; key = i; }
+  }
+  const rows = [];
+  for(const ln of lines){
+    const row = Array.from({length: n}, () => []);
+    for(const el of ln) row[cellOf(el)].push(el);
+    const opens = row.slice(0, key).some(c => c.length);
+    if(opens || !rows.length) rows.push(row);
+    else for(let i = 0; i < n; i++) rows[rows.length - 1][i].push(...row[i]);
+  }
+  const table = document.createElement("table");
+  for(const row of rows){
+    const tr = document.createElement("tr");
+    for(const cell of row){
+      const td = document.createElement("td");
+      for(const el of cell){
+        if(!el._home) el._home = {parent: el.parentNode, next: el.nextSibling};
+        td.appendChild(el);
+        td.appendChild(document.createTextNode(" "));
+      }
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+  grid.innerHTML = "";
+  grid.appendChild(table);
+  grid.hidden = false;
+  col.querySelector(".read").hidden = true;
+}
+
+function restoreWord(el){
+  const h = el._home;
+  h.parent.insertBefore(el, h.next);
+  el._home = null;
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest("button.cols");
+  if(btn){
+    for(const col of btn.closest(".page").querySelectorAll(".col.tabley"))
+      col.classList.toggle("setting");
+    const on = btn.closest(".page").querySelector(".col.tabley.setting");
+    btn.textContent = on ? "done with the columns" : "set the columns";
+    return;
+  }
+  const g = e.target.closest(".guide");
+  if(g){
+    const col = g.closest(".col"), p = page(srcOf(col));
+    p.cols = guidesOf(p).filter(f => f !== +g.dataset.f);
+    drawGuides(col); buildGrid(col); save(); return;
+  }
+  const box = e.target.closest(".col.setting .guides");
+  if(box){
+    const col = box.closest(".col"), p = page(srcOf(col));
+    const r = box.getBoundingClientRect();
+    const f = Math.round((e.clientX - r.left) / r.width * 1000) / 1000;
+    if(f > 0.01 && f < 0.99 && !guidesOf(p).includes(f)){
+      p.cols = guidesOf(p).concat([f]).sort((a, b) => a - b);
+      drawGuides(col); buildGrid(col); save();
+    }
+  }
+});
+
 /* What a person does to a block. The tag is not on offer: the ink colour
    decides it and the ink colour is right. These four say where a line
    belongs, and `open` says the line begins with a drop capital, which a word
@@ -1817,9 +1964,9 @@ function out(){
   for(const src in state.pages){
     const p = state.pages[src];
     if(p.full || p.note || Object.keys(p.fix).length || Object.keys(p.ok).length
-       || Object.keys(p.str || {}).length)
+       || Object.keys(p.str || {}).length || (p.cols || []).length)
       pages[src] = {full:p.full, note:p.note, fix:p.fix, str:p.str || {},
-                    checked:Object.keys(p.ok).length};
+                    cols:p.cols || [], checked:Object.keys(p.ok).length};
   }
   return {sheet:SHEET, who:who.value.trim(), pages:pages};
 }
