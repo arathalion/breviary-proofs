@@ -1743,7 +1743,11 @@ function buildGrid(col){
   for(const ln of lines){
     const row = Array.from({length: n}, () => []);
     for(const el of ln) row[cellOf(el)].push(el);
-    const opens = row.slice(0, key).some(c => c.length);
+    /* Anything outside the column that runs on opens a row. Looking only to
+       its left collapsed the whole page into one row wherever the widest
+       column came early, because the margin of the leaf is column 0 and
+       nothing is ever in it. `as_table` in `structure.py` matches this. */
+    const opens = row.some((c, i) => i !== key && c.length);
     if(opens || !rows.length) rows.push(row);
     else for(let i = 0; i < n; i++) rows[rows.length - 1][i].push(...row[i]);
   }
