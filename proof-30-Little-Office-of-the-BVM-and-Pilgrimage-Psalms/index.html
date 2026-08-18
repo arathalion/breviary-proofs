@@ -1587,13 +1587,21 @@ who.addEventListener("change", () => localStorage.setItem("proof:who", who.value
 
    A guide is held as a fraction of the width of the scan, so it survives the
    image being shown at any size. */
-function guidesOf(p){ return p.cols || (p.cols = []); }
+function guidesOf(p, col){
+  if(!p.cols && col){
+    /* Nothing stored here yet, so open with whatever the book is being set
+       from. An empty list is a real answer and is kept as one. */
+    try { p.cols = JSON.parse(col.querySelector(".shot").dataset.cols || "[]"); }
+    catch(e) { p.cols = []; }
+  }
+  return p.cols || (p.cols = []);
+}
 
 function drawGuides(col){
   const p = page(srcOf(col)), box = col.querySelector(".guides");
   if(!box) return;
   box.innerHTML = "";
-  for(const f of guidesOf(p)){
+  for(const f of guidesOf(p, col)){
     const g = document.createElement("div");
     g.className = "guide";
     g.style.left = (f * 100) + "%";
@@ -1609,7 +1617,7 @@ function drawGuides(col){
 function buildGrid(col){
   const p = page(srcOf(col)), grid = col.querySelector(".grid");
   if(!grid) return;
-  const cuts = guidesOf(p);
+  const cuts = guidesOf(p, col);
   const words = [...col.querySelectorAll("w[data-x]")];
   if(!cuts.length || !words.length){
     for(const el of words) if(el._home) restoreWord(el);
@@ -1693,7 +1701,7 @@ document.addEventListener("click", e => {
   const g = e.target.closest(".guide");
   if(g){
     const col = g.closest(".col"), p = page(srcOf(col));
-    p.cols = guidesOf(p).filter(f => f !== +g.dataset.f);
+    p.cols = guidesOf(p, col).filter(f => f !== +g.dataset.f);
     drawGuides(col); buildGrid(col); save(); return;
   }
   const box = e.target.closest(".col.setting .guides");
@@ -1701,8 +1709,8 @@ document.addEventListener("click", e => {
     const col = box.closest(".col"), p = page(srcOf(col));
     const r = box.getBoundingClientRect();
     const f = Math.round((e.clientX - r.left) / r.width * 1000) / 1000;
-    if(f > 0.01 && f < 0.99 && !guidesOf(p).includes(f)){
-      p.cols = guidesOf(p).concat([f]).sort((a, b) => a - b);
+    if(f > 0.01 && f < 0.99 && !guidesOf(p, col).includes(f)){
+      p.cols = guidesOf(p, col).concat([f]).sort((a, b) => a - b);
       drawGuides(col); buildGrid(col); save();
     }
   }
