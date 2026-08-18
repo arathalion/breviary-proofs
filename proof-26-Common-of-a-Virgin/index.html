@@ -28,8 +28,14 @@ h1{font-size:1.5rem;font-weight:400;margin:0 0 .3rem}
    person can read. A page not set in columns is nearly square, and the same
    17rem shrinks the whole leaf to a postage stamp. Give the wide ones room:
    the sheet holds one column on those pages, so the room is there. */
-.col img.wide{max-width:40rem}
-.col img{max-width:17rem;width:100%;height:auto;align-self:flex-start;cursor:zoom-in;
+.col img.wide{max-width:min(40rem,100%)}
+.thin{border:1px dashed var(--warn);color:var(--warn);border-radius:3px;
+      padding:.5rem .7rem;font-size:.85rem;max-width:22rem;align-self:flex-start}
+/* `width:100%` here stretched every crop to the full 17rem, whatever its own
+   size. A crop 4 px wide then rendered 272 px wide and 114,716 px tall, and
+   Max asked why the scan was so big to correct against. `width:auto` lets a
+   crop keep its own size, and `max-width` still holds the big ones in. */
+.col img{max-width:min(17rem,100%);width:auto;height:auto;align-self:flex-start;cursor:zoom-in;
          border:1px solid var(--rule);position:sticky;top:5rem}
 /* 300 ppi of 9 pt type does not read at 17 rem. Click the scan to see it at
    the size it was scanned, which is the size a letter must be judged at. */
