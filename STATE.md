@@ -30,8 +30,8 @@ book, and what is still wrong with them.
     tools/ocr_all.sh ''                 read and structure every page
     tools/audit.py drafts/*.json        pages where the reading went wrong
     tools/unread.py                     ink no word box covers
-    tools/proof.py ... -o proofs/x/     build a sheet for a person
-    tools/proofindex.py proofs/         write the page a link opens
+    tools/proof.py ... -o docs/x/     build a sheet for a person
+    tools/proofindex.py docs/         write the page a link opens
     tools/witness.py                    words the book contradicts
     tools/check.py                      what a change did to the book
     onecolumn.txt                       pages not set in two columns
@@ -170,13 +170,13 @@ measurement already taken stays comparable.
 ## What to do next
 
 0. **The sheets stand at a link now.**
-   [arathalion.github.io/breviary-proofs](https://arathalion.github.io/breviary-proofs/),
-   served by GitHub Pages out of the `proofs` repository, which is public now.
+   [arathalion.github.io/dominican-breviary](https://arathalion.github.io/dominican-breviary/),
+   served by GitHub Pages out of the `docs` folder of this repository, which is public now.
    A proofreader follows the link and works in the browser. Nothing is
    downloaded and nothing is installed, and the corrections go back on the
    clipboard, pasted into a message. Send the link to the friends who offered.
 
-1. **`proofs/proof-00-Repairs`, 18 pages.** The worst 18 in the book, chosen
+1. **`docs/proof-00-Repairs`, 18 pages.** The worst 18 in the book, chosen
    by measurement rather than by eye: `unread.py` finds, on every page, the
    ink that no word box covers, and these carry two to twenty three times as
    much of it as the rest of their part. They mark 20.3% of their words
@@ -322,8 +322,9 @@ the Psalter files existed here.
 | `pages.old/`, `drafts.old/`, `structured.old/` | the previous output, 13 GB. Delete when satisfied |
 | `tex/parts/` | one PDF a part |
 | `tex/editions/one\|two\|four/` | the same book bound three ways |
-| `proofs/` | the proof sheets, a private repo at github.com/arathalion/breviary-proofs |
-| `proofs/corrections/` | what a proofreader sends back |
+| `docs/` | the proof sheets. GitHub Pages serves this folder, and it is what a proofreader opens |
+| `.git` | the whole project, at github.com/arathalion/dominican-breviary. 548 KB tracked, the 23 GB of derived work ignored |
+| `docs/corrections/` | what a proofreader sends back |
 | `compile-all.log` | the typesetting result for each part |
 | `plan.html` | the full plan, published at claude.ai/code/artifact/c1c8506d-0b51-47f1-8e9c-87b46660fe12 |
 

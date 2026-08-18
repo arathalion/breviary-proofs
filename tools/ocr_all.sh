@@ -75,10 +75,10 @@ fi
 # when you proof it.
 if [ "${PROOF:-1}" = 1 ]; then
     echo "== proof sheet"
-    "$PY" "$ROOT/tools/proof.py" "$@" -o "$ROOT/proofs/proof-$name/" --images "$CROPS"
+    "$PY" "$ROOT/tools/proof.py" "$@" -o "$ROOT/docs/proof-$name/" --images "$CROPS"
     # The landing page reads its numbers back out of the sheets, so it follows
     # them. A sheet that is built and not listed is a sheet nobody can reach.
-    "$PY" "$ROOT/tools/proofindex.py" "$ROOT/proofs/"
+    "$PY" "$ROOT/tools/proofindex.py" "$ROOT/docs/"
 fi
 
 echo "== audit"

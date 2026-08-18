@@ -2,7 +2,7 @@
 """Write the page a proofreader lands on, and link every sheet from it.
 
 Usage:
-    proofindex.py proofs/            write proofs/index.html
+    proofindex.py docs/            write proofs/index.html
 
 A sheet used to reach a person as a folder: download the repository, unzip
 it, find the part, open `index.html`. That is three steps and 17 MB before
@@ -95,7 +95,7 @@ def read(sheet):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("root", help="the folder holding the proof-* sheets")
+    ap.add_argument("root", help="the folder holding the proof-* sheets, normally docs/")
     args = ap.parse_args()
     root = Path(args.root)
 

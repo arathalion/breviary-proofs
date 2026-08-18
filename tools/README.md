@@ -19,7 +19,7 @@ reads, and every step can be stopped and started again.
 | infer the structure of a page | (inside `ocr_all.sh`) | `structured/` |
 | find pages where the reading went wrong | `audit.py` | a report |
 | find ink no word box covers | `unread.py` | a report |
-| put the reading beside the scan | `proof.py` | `proofs/proof-*/` |
+| put the reading beside the scan | `proof.py` | `docs/proof-*/` |
 | write the page a proofreader lands on | `proofindex.py` | `proofs/index.html` |
 | put the corrections back | `applyfix.py` | `drafts/` |
 | show what the column finder saw | `showcolumns.py` | an HTML sheet |
@@ -45,8 +45,8 @@ The proof sheet is where a person works. It holds the corrections, and
 `applyfix.py` puts them back into the drafts.
 
     tools/ocr_all.sh 26-Common-of-a-Virgin      build the sheet
-    tools/proofindex.py proofs/                 write the landing page again
-    git -C proofs commit -am sheets && git -C proofs push
+    tools/proofindex.py docs/                 write the landing page again
+    git commit -am sheets && git -C proofs push
     tools/applyfix.py corrections-26-*.json -n  say what would change
     tools/applyfix.py corrections-26-*.json     change it
     tools/ocr_all.sh 26-Common-of-a-Virgin      structure the pages again
@@ -56,8 +56,8 @@ WebP. Part 26 is 5.4 MB. Give `-o` a name that ends in `.html` for one file
 with the images inside it, and expect 87 MB for the same part.
 
 The sheets stand at
-[arathalion.github.io/breviary-proofs](https://arathalion.github.io/breviary-proofs/),
-which GitHub Pages serves out of the `proofs` repository. A proofreader
+[arathalion.github.io/dominican-breviary](https://arathalion.github.io/dominican-breviary/),
+which GitHub Pages serves out of the `docs` folder of this repository. A proofreader
 follows one link and works in the browser. Nothing is downloaded, and nothing
 is installed. Push the repository and the site follows about a minute later.
 

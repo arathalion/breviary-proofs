@@ -1,6 +1,6 @@
 # Proofing the breviary
 
-**Open [arathalion.github.io/breviary-proofs](https://arathalion.github.io/breviary-proofs/).
+**Open [arathalion.github.io/dominican-breviary](https://arathalion.github.io/dominican-breviary/).
 That is the whole thing.** You need nothing from this page, and nothing from
 GitHub. This page is here for anyone who lands on the code instead.
 
@@ -158,8 +158,8 @@ run to 576 pages each and nobody should meet one first.
 
 ## For Max
 
-    tools/proof.py drafts/26-*.json --images drafts/crops -o proofs/proof-26-.../
-    tools/proofindex.py proofs/            write the landing page again
+    tools/proof.py drafts/26-*.json --images drafts/crops -o docs/proof-26-.../
+    tools/proofindex.py docs/            write the landing page again
     tools/applyfix.py corrections-*.json   put the corrections back
 
 Save what a proofreader pastes back into `corrections/`, then run
