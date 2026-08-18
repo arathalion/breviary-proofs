@@ -1651,7 +1651,11 @@ try {
 let held = true;   /* is everything on this sheet in a file yet */
 
 function page(src){
-  if(!state.pages[src]) state.pages[src] = {full:false, note:"", fix:{}, ok:{}, str:{}, cols:[]};
+  /* `cols` is left undefined on purpose. An empty list is a real answer — a
+     person who takes every guide off a page means none — so it must be told
+     apart from "nobody has said yet", which is what seeds the guides the book
+     is being set from. Initialising it to [] here defeats that. */
+  if(!state.pages[src]) state.pages[src] = {full:false, note:"", fix:{}, ok:{}, str:{}};
   /* Sheets held before the structure gestures existed have no `str`. */
   if(!state.pages[src].str) state.pages[src].str = {};
   return state.pages[src];
