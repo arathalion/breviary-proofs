@@ -122,6 +122,9 @@ one. Put your name in the table below as well, if you use GitHub.
 
 | part | pages | words | marked | stray marks | who is on it |
 |---|---|---|---|---|---|
+| `06-Psalter-Monday` | 26 | 9,033 | 6.6% | | |
+| `07-Psalter-Tuesday` | 26 | 8,895 | 6.1% | | |
+| `09-Psalter-Thursday` | 26 | 9,012 | 6.8% | | |
 | `19-Psalms-for-1st-Class-Feasts-of-Our-Lord` | 4 | 1,274 | 4.7% | 25 | |
 | `35-Appendix-II-Excerpts-from-the-Roman-Ritual` | 10 | 2,888 | 6.8% | 125 | |
 | `32-Seven-Penitential-Psalms-and-Litany-of-the-Saints` | 10 | 3,397 | 7.8% | 90 | |
@@ -134,6 +137,16 @@ Start with **19**. It is four pages and it exists so that you can go through
 the whole loop once — correct a few words, press send, paste it into a message
 — and find out whether anything about the sheet is confusing before you spend
 a real afternoon on it.
+
+Then take a **Psalter** day: Monday, Tuesday or Thursday, 26 pages each. That
+is the best work on this book. The text is the cleanest in it, 6.1% to 6.8%
+marked against 9 to 10% for the Commons, and it is the text you pray every
+week, so you will notice a wrong word that a stranger would read past.
+
+**Do not start with `proof-00-Repairs`.** It is the worst 18 pages in the book
+and it is chosen to be. On 10 of those 18 there is no word to correct at all,
+because the fault is the page, not the reading. It is worth doing, and it is
+not worth doing first.
 
 Part 19 marks 4.7% of its words now, because Max proofed it on 2026-08-17 and
 the corrections went back into the drafts.
