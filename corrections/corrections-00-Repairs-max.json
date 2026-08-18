@@ -1,0 +1,621 @@
+{
+ "sheet": "00-Repairs",
+ "who": "Max",
+ "pages": {
+  "00-Preliminary-Pages-0001b": {
+   "full": true,
+   "note": "there is a stamp that says laudare benedicere praedicare",
+   "fix": {
+    "0.6": {
+     "was": "Yala",
+     "now": "",
+     "after": "Al"
+    },
+    "0.7": {
+     "was": "Al",
+     "now": "",
+     "after": "Se"
+    },
+    "0.8": {
+     "was": "Se",
+     "now": "",
+     "after": "el"
+    },
+    "0.9": {
+     "was": "el",
+     "now": "",
+     "after": "ENE"
+    },
+    "0.10": {
+     "was": "ENE",
+     "now": "",
+     "after": "DICE"
+    },
+    "0.11": {
+     "was": "DICE",
+     "now": "",
+     "after": "Soar"
+    },
+    "0.12": {
+     "was": "Soar",
+     "now": "",
+     "after": "es"
+    },
+    "0.13": {
+     "was": "es",
+     "now": ""
+    }
+   },
+   "checked": 0
+  },
+  "00-Preliminary-Pages-0002b": {
+   "full": true,
+   "note": "this is a full page, shouldn't be split into columns",
+   "fix": {},
+   "checked": 0
+  },
+  "00-Preliminary-Pages-0004a": {
+   "full": true,
+   "note": "zoomed in way too much, not able to make any corrections",
+   "fix": {},
+   "checked": 0
+  },
+  "02-The-Year-and-Its-Parts-0009b": {
+   "full": true,
+   "note": "this is a table, no need to have two columns. should be rebuilt as a table.",
+   "fix": {},
+   "checked": 0
+  },
+  "03-Liturgical-Calendar-0001a": {
+   "full": true,
+   "note": "once agan, shouldn't be split. this is a calendar",
+   "fix": {},
+   "checked": 0
+  },
+  "03-Liturgical-Calendar-0002a": {
+   "full": true,
+   "note": "calendar",
+   "fix": {},
+   "checked": 0
+  },
+  "03-Liturgical-Calendar-0003a": {
+   "full": true,
+   "note": "calendar",
+   "fix": {},
+   "checked": 0
+  },
+  "04-Ordinary-of-the-Divine-Office-0001b": {
+   "full": true,
+   "note": "heading cut in half; missing \"MATINS\"; missing drop cap",
+   "fix": {
+    "2.0": {
+     "was": "©",
+     "now": "℣"
+    },
+    "3.0": {
+     "was": "vy.",
+     "now": ""
+    },
+    "5.0": {
+     "was": "IY,",
+     "now": "℟"
+    },
+    "6.5": {
+     "was": "©",
+     "now": "℣"
+    },
+    "7.0": {
+     "was": "Ry,",
+     "now": ""
+    },
+    "6.12": {
+     "was": "|",
+     "now": "℟"
+    },
+    "10.34": {
+     "was": "Allehuia.",
+     "now": "Alleluia."
+    },
+    "12.0": {
+     "was": "Alleluia",
+     "now": ""
+    },
+    "13.0": {
+     "was": "the",
+     "now": "the Alleluia"
+    },
+    "20.0": {
+     "was": "ome,",
+     "now": "Come,"
+    },
+    "23.0": {
+     "was": "¥.",
+     "now": ""
+    },
+    "22.0": {
+     "was": "A",
+     "now": "℣ A"
+    },
+    "24.6": {
+     "was": "eods.",
+     "now": "gods"
+    },
+    "24.15": {
+     "was": "hus",
+     "now": "his"
+    }
+   },
+   "checked": 2
+  },
+  "11-Psalter-Saturday-0015b": {
+   "full": true,
+   "note": "lines out of order, header split, drop caps missed",
+   "fix": {
+    "11.2": {
+     "was": "|",
+     "now": "",
+     "after": "|"
+    },
+    "11.3": {
+     "was": "|",
+     "now": "",
+     "after": "in"
+    },
+    "13.6": {
+     "was": "|",
+     "now": "",
+     "after": "Glory."
+    },
+    "15.11": {
+     "was": "|",
+     "now": "",
+     "after": "light,"
+    },
+    "15.21": {
+     "was": "|",
+     "now": "",
+     "after": "In"
+    },
+    "15.29": {
+     "was": "|",
+     "now": "",
+     "after": "For,"
+    },
+    "15.52": {
+     "was": "|",
+     "now": "",
+     "after": "And"
+    },
+    "15.59": {
+     "was": "|",
+     "now": "",
+     "after": "When"
+    },
+    "15.75": {
+     "was": "|",
+     "now": "",
+     "after": "You"
+    },
+    "6.0": {
+     "was": "ehold,",
+     "now": "Behold,"
+    },
+    "7.0": {
+     "was": "Ie,",
+     "now": "℟"
+    },
+    "9.0": {
+     "was": "Vv,",
+     "now": "℣"
+    },
+    "10.22": {
+     "was": "-",
+     "now": "–"
+    },
+    "13.5": {
+     "was": "-",
+     "now": "–"
+    },
+    "13.8": {
+     "was": "-",
+     "now": "–"
+    },
+    "15.0": {
+     "was": "reator",
+     "now": "Creator"
+    },
+    "15.35": {
+     "was": "3",
+     "now": "",
+     "after": "breath"
+    }
+   },
+   "checked": 0
+  },
+  "12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0218a": {
+   "full": true,
+   "note": "split header. missing drop cap. out of order text (Ant. Alleluia, alleluia, alleluia.)",
+   "fix": {
+    "14.0": {
+     "was": "if",
+     "now": "",
+     "after": "raise"
+    },
+    "14.1": {
+     "was": "raise",
+     "now": "Praise"
+    },
+    "14.6": {
+     "was": "is",
+     "now": "",
+     "after": "place,"
+    },
+    "17.7": {
+     "was": "©",
+     "now": "O"
+    },
+    "17.29": {
+     "was": "tum",
+     "now": "him"
+    },
+    "17.35": {
+     "was": "©",
+     "now": "O"
+    },
+    "17.49": {
+     "was": "cyra-",
+     "now": "cym- bals"
+    },
+    "17.62": {
+     "was": "JLord.",
+     "now": "Lord."
+    },
+    "17.63": {
+     "was": "Allehuie,",
+     "now": "Alleluia,"
+    },
+    "19.0": {
+     "was": "alleliia.",
+     "now": "alleluia."
+    }
+   },
+   "checked": 0
+  },
+  "12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0236a": {
+   "full": true,
+   "note": "Ant. in the wrong spot. missing drop cap. V bar and R bar are very typically out of order. heading split. missing \"Matins\". Magnif. ant. out of order",
+   "fix": {
+    "0.24": {
+     "was": ".",
+     "now": "",
+     "after": "indeed,"
+    },
+    "0.19": {
+     "was": ":",
+     "now": "℟"
+    },
+    "0.26": {
+     "was": "alleluia,",
+     "now": "* alleluia,"
+    },
+    "0.28": {
+     "was": "3",
+     "now": "",
+     "after": "~"
+    },
+    "0.32": {
+     "was": "And",
+     "now": "℣ And"
+    },
+    "0.34": {
+     "was": "f",
+     "now": "",
+     "after": "appeared"
+    },
+    "0.39": {
+     "was": "Alle-",
+     "now": "Alle- luia."
+    },
+    "0.41": {
+     "was": "luia.",
+     "now": "",
+     "after": "~"
+    },
+    "0.47": {
+     "was": "H",
+     "now": "℣"
+    },
+    "0.52": {
+     "was": "Ht",
+     "now": "",
+     "after": "from"
+    },
+    "0.57": {
+     "was": "is",
+     "now": "℟"
+    },
+    "1.0": {
+     "was": "I",
+     "now": "NONE"
+    },
+    "6.0": {
+     "was": "hen",
+     "now": "When"
+    },
+    "8.4": {
+     "was": "alicluia.",
+     "now": "alleluia"
+    },
+    "19.7": {
+     "was": "allelyia.",
+     "now": "alleluia"
+    },
+    "19.8": {
+     "was": "1i",
+     "now": "II"
+    },
+    "19.9": {
+     "was": "YESPERS",
+     "now": "VESPERS"
+    },
+    "19.10": {
+     "was": "a",
+     "now": ""
+    },
+    "22.3": {
+     "was": "Psalter,",
+     "now": "Psalter, p. 46."
+    },
+    "23.0": {
+     "was": "Christ,",
+     "now": "Christ, being raised"
+    },
+    "25.0": {
+     "was": "beime",
+     "now": "",
+     "after": "raised,"
+    },
+    "25.1": {
+     "was": "raised,",
+     "now": "",
+     "after": "‘The"
+    },
+    "26.0": {
+     "was": "and",
+     "now": ""
+    },
+    "28.0": {
+     "was": "V,",
+     "now": "℣"
+    },
+    "31.14": {
+     "was": "7",
+     "now": "",
+     "after": "seen,"
+    },
+    "31.18": {
+     "was": "beleve,",
+     "now": "believe,"
+    },
+    "33.0": {
+     "was": "rant,",
+     "now": "Grant,"
+    },
+    "33.16": {
+     "was": "solemmnities",
+     "now": "solemnities"
+    },
+    "34.2": {
+     "was": "Iiymn",
+     "now": "Hymn"
+    },
+    "35.0": {
+     "was": "awn’s",
+     "now": "Dawn’s"
+    },
+    "35.2": {
+     "was": "leht",
+     "now": "light"
+    },
+    "35.12": {
+     "was": "3",
+     "now": "",
+     "after": "The"
+    }
+   },
+   "checked": 1
+  },
+  "12-Proper-of-the-Season-Vol-1-Advent-to-Vigil-of-Trinity-0267a": {
+   "full": true,
+   "note": "Alleluia out of order. missing drop cap. missing bottom of left and top/bottom of right column. O become copyright symbol frequently",
+   "fix": {
+    "7.0": {
+     "was": "n",
+     "now": "In"
+    },
+    "8.0": {
+     "was": "I",
+     "now": ""
+    },
+    "17.0": {
+     "was": "ternal",
+     "now": "Eternal"
+    },
+    "19.32": {
+     "was": "Teo",
+     "now": "To"
+    },
+    "19.33": {
+     "was": "Tesus",
+     "now": "Jesus"
+    },
+    "19.35": {
+     "was": "contro]",
+     "now": "control"
+    },
+    "19.56": {
+     "was": "halt",
+     "now": "hell"
+    },
+    "19.57": {
+     "was": "We",
+     "now": "we"
+    },
+    "19.58": {
+     "was": "MaMmMeae",
+     "now": "name"
+    },
+    "20.34": {
+     "was": "mati",
+     "now": "man"
+    },
+    "20.53": {
+     "was": "©",
+     "now": "O"
+    },
+    "20.54": {
+     "was": "Jet",
+     "now": "let"
+    },
+    "20.96": {
+     "was": "alleluza.",
+     "now": "alleluia."
+    },
+    "21.0": {
+     "was": "IY,",
+     "now": "℟"
+    },
+    "20.90": {
+     "was": "Your",
+     "now": "℣ Your"
+    },
+    "23.0": {
+     "was": "Magnif,",
+     "now": "Magnif."
+    },
+    "24.27": {
+     "was": "whoa",
+     "now": "who"
+    }
+   },
+   "checked": 0
+  },
+  "13-Proper-of-the-Season-Vol-2-Trinity-to-24th-Sunday-after-Pentecost-0001a": {
+   "full": true,
+   "note": "split in the wrong spot",
+   "fix": {},
+   "checked": 0
+  },
+  "13-Proper-of-the-Season-Vol-2-Trinity-to-24th-Sunday-after-Pentecost-0001b": {
+   "full": true,
+   "note": "split incorrectly",
+   "fix": {},
+   "checked": 0
+  },
+  "16-Proper-of-the-Saints-Vol-2-0040b": {
+   "full": true,
+   "note": "not split down the middle",
+   "fix": {},
+   "checked": 0
+  },
+  "16-Proper-of-the-Saints-Vol-2-0048b": {
+   "full": true,
+   "note": "not split correctly",
+   "fix": {},
+   "checked": 0
+  },
+  "16-Proper-of-the-Saints-Vol-2-0062b": {
+   "full": true,
+   "note": "missing v/r bars; drops cap missing",
+   "fix": {
+    "1.4": {
+     "was": "stephen",
+     "now": "Stephen"
+    },
+    "8.0": {
+     "was": "It",
+     "now": "O"
+    },
+    "10.16": {
+     "was": "i",
+     "now": ""
+    },
+    "12.12": {
+     "was": "‘an",
+     "now": "",
+     "after": "|"
+    },
+    "12.19": {
+     "was": "MW",
+     "now": "",
+     "after": ":"
+    },
+    "12.27": {
+     "was": "q",
+     "now": "Through."
+    }
+   },
+   "checked": 2
+  },
+  "26-Common-of-a-Virgin-outside-PT-0001a": {
+   "full": true,
+   "note": "out of order r bar. missing drop cap. split header. missing v bar",
+   "fix": {
+    "1.2": {
+     "was": "IY.",
+     "now": "℟"
+    },
+    "3.0": {
+     "was": "7",
+     "now": "℣"
+    },
+    "8.1": {
+     "was": "nd",
+     "now": "And"
+    },
+    "8.22": {
+     "was": "mname’s",
+     "now": "name’s"
+    },
+    "15.46": {
+     "was": "household”’.",
+     "now": "household”."
+    },
+    "16.1": {
+     "was": "1x.",
+     "now": "ix."
+    },
+    "19.1": {
+     "was": "and",
+     "now": "* and"
+    },
+    "21.4": {
+     "was": "Watch,",
+     "now": "℣ Watch,"
+    },
+    "21.23": {
+     "was": "~",
+     "now": "–"
+    },
+    "21.25": {
+     "was": "—",
+     "now": "–"
+    },
+    "21.29": {
+     "was": "fa",
+     "now": "",
+     "after": "Virgin"
+    },
+    "23.1": {
+     "was": "C",
+     "now": "O"
+    },
+    "27.0": {
+     "was": "will",
+     "now": "I will"
+    }
+   },
+   "checked": 2
+  }
+ }
+}
